@@ -1,26 +1,124 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lucky-draw-frontend-joy</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteio Online</title>
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="src/index.css">
+</head>
+<body>
+  <div class="main-container">
+    <div class="container">
+      <!-- Header -->
+      <div class="row center-align">
+        <div class="col s12">
+          <h1 class="app-title">Sorteio Online</h1>
+          <p class="grey-text text-darken-1">Adicione participantes e faça um sorteio de forma rápida e divertida!</p>
+        </div>
+      </div>
 
-    <meta property="og:title" content="lucky-draw-frontend-joy" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+      <div class="row">
+        <!-- Participants Form and Draw Section -->
+        <div class="col s12 m8">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Adicionar Participantes</span>
+              <p class="grey-text">Insira os nomes dos participantes do sorteio.</p>
+              
+              <div class="row">
+                <form id="participant-form" class="col s12">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">person_add</i>
+                    <input id="participant-name" type="text" class="validate">
+                    <label for="participant-name">Nome do participante</label>
+                  </div>
+                  <div class="col s12">
+                    <button class="btn waves-effect waves-light purple darken-1" type="submit">
+                      <i class="material-icons left">add</i>Adicionar
+                    </button>
+                  </div>
+                </form>
+              </div>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+              <div class="divider"></div>
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+              <div class="center-align" style="margin-top: 30px;">
+                <button id="draw-button" class="btn-large purple accent-3 pulse-animation draw-button" disabled>
+                  <i class="material-icons left">card_giftcard</i>
+                  Realizar Sorteio
+                </button>
+                
+                <div id="winner-display" class="winner-card" style="display: none; margin-top: 30px;">
+                  <div class="card-panel amber lighten-5">
+                    <div class="center-align">
+                      <i class="material-icons medium amber-text text-darken-2">emoji_events</i>
+                      <h4 class="winner-name" id="winner-name"></h4>
+                      <p class="grey-text text-darken-1">É o grande vencedor!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Participants List -->
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Participantes</span>
+              <p id="participant-count" class="grey-text">0 participantes no sorteio atual</p>
+              
+              <div class="divider" style="margin: 10px 0;"></div>
+              
+              <div class="participants-container" style="max-height: 300px; overflow-y: auto; margin-top: 10px;">
+                <ul id="participants-list" class="collection">
+                  <!-- Participants will be added here -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Draw History -->
+      <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Histórico de Sorteios</span>
+              <p class="grey-text">Veja os resultados de sorteios anteriores</p>
+              
+              <div class="divider" style="margin: 10px 0;"></div>
+              
+              <div id="draw-history" style="max-height: 200px; overflow-y: auto; margin-top: 10px;">
+                <!-- History will be added here -->
+              </div>
+            </div>
+            <div class="card-action right-align">
+              <button id="clear-history" class="btn-flat grey-text text-darken-2" disabled>
+                Limpar Histórico
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="confetti-container"></div>
+
+  <!-- Materialize JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="src/script.js"></script>
+</body>
 </html>
